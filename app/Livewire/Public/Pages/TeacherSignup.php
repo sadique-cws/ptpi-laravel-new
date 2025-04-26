@@ -5,7 +5,7 @@ namespace App\Livewire\Public\Pages;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout("layouts.publicLayout")]
+#[Layout("layouts.loginLayout")]
 class TeacherSignup extends Component
 {
     public function render()

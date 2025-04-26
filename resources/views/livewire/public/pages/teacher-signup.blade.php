@@ -131,7 +131,7 @@
                 </form>
 
                 <div class="mt-6 text-center">
-                    <a href="#"
+                    <a href="{{ route("public.recruiter.signup") }}"
                         class="w-full inline-flex items-center justify-center px-4 py-3 bg-teal-600 text-sm font-medium rounded-xl text-white hover:bg-teal-700 transition duration-200">
                         Sign up as Recruiter
                     </a>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
 
-                    <a href="#"
+                    <a href="{{ route("public.login") }}"
                         class="mt-4 w-full inline-flex items-center justify-center px-4 py-3 border border-teal-600 text-sm font-medium rounded-xl text-teal-600 bg-white hover:bg-teal-50 transition duration-200">
                         Already have an account? Sign in
                     </a>

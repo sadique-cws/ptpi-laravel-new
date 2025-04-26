@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class LoginPage extends Component
 {
-    #[Layout("layouts.publicLayout")]
+    #[Layout("layouts.loginLayout")]
 
     public function render()
     {
