@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -20,3 +17,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+// import public routes
+require __DIR__.'/public.php';
+
+// import admin routes
+require __DIR__.'/admin.php';
+
+
+// import teacher routes
+require __DIR__.'/teacher.php';

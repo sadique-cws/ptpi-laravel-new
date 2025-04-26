@@ -1,3 +1,4 @@
 <div>
-    {{-- Be like water. --}}
+<h1>this is homepage</h1>
+
 </div>
