@@ -4,11 +4,12 @@ namespace App\Livewire\Teacher\Pages;
 
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+
 #[Layout('layouts.teacherLayout')]
-class Dashboard extends Component
+class Attempts extends Component
 {
     public function render()
     {
-        return view('livewire.teacher.pages.dashboard');
+        return view('livewire.teacher.pages.attempts');
     }
 }
