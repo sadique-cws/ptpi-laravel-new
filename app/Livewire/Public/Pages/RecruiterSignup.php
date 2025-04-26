@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Public\Pages;
 
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout("layouts.publicLayout")]
 class RecruiterSignup extends Component
 {
     public function render()
