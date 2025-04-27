@@ -116,17 +116,11 @@
                     </div>
                 </div>
             </div>
-           <div class="">
+           <div class="ml-72 p-2">
             {{ $slot}}
            </div>
         </div>
     </div>
-
-
-    <div class="flex">
-
-    </div>
-
 
 </body>
 
