@@ -18,7 +18,7 @@
                                 First Name
                             </label>
                             <div class="relative">
-                                <input type="text" wire:model.defer="Fname"
+                                <input type="text" wire:model.live="Fname"
                                     class="w-full border-2 text-sm rounded-xl p-3 transition-colors border-gray-300 focus:border-teal-600"
                                     placeholder="Enter your first name">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
                                 Last Name
                             </label>
                             <div class="relative">
-                                <input type="text" wire:model.defer="Lname"
+                                <input type="text" wire:model.live="Lname"
                                     class="w-full border-2 text-sm rounded-xl p-3 transition-colors border-gray-300 focus:border-teal-600"
                                     placeholder="Enter your last name">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@
                             Email
                         </label>
                         <div class="relative">
-                            <input type="email" wire:model.defer="email"
+                            <input type="email" wire:model.live="email"
                                 class="w-full border-2 text-sm rounded-xl p-3 transition-colors border-gray-300 focus:border-teal-600"
                                 placeholder="Enter your email">
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@
                             Password
                         </label>
                         <div class="relative">
-                            <input type="password" wire:model.defer="password"
+                            <input type="password" wire:model.live="password"
                                 class="w-full border-2 text-sm rounded-xl p-3 transition-colors border-gray-300 focus:border-teal-600"
                                 placeholder="Enter your password" x-data="{ show: false }"
                                 :type="show ? 'text' : 'password'">
