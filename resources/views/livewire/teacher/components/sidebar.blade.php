@@ -29,7 +29,7 @@
 
             <div class="flex flex-col flex-1 justify-between">
                 <nav class="w-full mt-1">
-                    <a href="/teacher"
+                    <a wire:navigate href="{{ route('teacher.dashboard') }}"
                         class="block py-3 px-4 text-gray-500 hover:bg-[#F5F8FA] transition flex items-center gap-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,7 +38,7 @@
                         Dashboard
                     </a>
 
-                    <a href="/teacher/personal-profile"
+                    <a wire:navigate href="{{ route('teacher.profile')}}"
                         class="block py-3 px-4 text-gray-500 hover:bg-[#F5F8FA] transition flex items-center gap-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,7 +47,7 @@
                         Personal Details
                     </a>
 
-                    <a href="/teacher/job-profile"
+                    <a wire:navigate href="{{ route('teacher.jobProfile') }}"
                         class="block py-3 px-4 text-gray-500 hover:bg-[#F5F8FA] transition flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
