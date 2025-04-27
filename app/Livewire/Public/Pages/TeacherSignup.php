@@ -19,12 +19,6 @@ class TeacherSignup extends Component
     #[Validate('required|string|min:8|regex:/[0-9]/|regex:/[^A-Za-z0-9]/')]
     public $password;
     
-    // protected $rules = [
-    //     'Fname' => 'required|string|max:255',
-    //     'Lname' => 'required|string|max:255',
-    //     'email' => 'required|email|unique:users,email',
-    //     'password' => 'required|string|min:8|regex:/[0-9]/|regex:/[^A-Za-z0-9]/',
-    // ];
 
     public function register(){
         $this->validate();
