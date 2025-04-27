@@ -14,7 +14,7 @@
 <div class="bg-teal-600 text-white py-4 px-8 text-xl font-bold">
     Teacher Dashboard
 </div>
-
+<livewire:teacher.component.sidebar/>
     {{ $slot }}
 
 
