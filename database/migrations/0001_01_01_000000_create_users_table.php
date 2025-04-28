@@ -21,6 +21,8 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female', 'other'])->nullable(); 
             $table->enum('role', ['teacher', 'admin', 'recruiter', 'exam-setter'])->default('teacher');
             $table->enum('religion', ['Hindu', 'Muslim', 'Other'])->nullable();
+            $table->enum('language', ['Hindi', 'English', 'Other'])->nullable();
+            $table->enum('marital_status', ['Single', 'Married', 'Unmarried'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
