@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->string('image')->nullable();
+            $table->text('bio')->nullable();
             $table->string('phone')->nullable();
             $table->string('age')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable(); 

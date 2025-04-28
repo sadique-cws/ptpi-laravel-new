@@ -22,7 +22,7 @@ class LoginPage extends Component
       $data= $this->validate();
         // dd($data);
       if(Auth::attempt($data)){
-        return redirect()->route('teacher.profile')->with('success', 'Registration successful!');
+        return redirect()->route('teacher.profile')->with('success', 'Login successful!');
       }else{
         return redirect()->back();
       }
