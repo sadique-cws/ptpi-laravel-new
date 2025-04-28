@@ -61,7 +61,7 @@
                             Email
                         </label>
                         <div class="relative">
-                            <input type="email" wire:model.live="email"
+                            <input type="email" wire:model.blur="email"
                                 class="w-full border-2 text-sm rounded-xl p-3 transition-colors border-gray-300 focus:border-teal-600"
                                 placeholder="Enter your email">
                             <svg xmlns="http://www.w3.org/2000/svg"
