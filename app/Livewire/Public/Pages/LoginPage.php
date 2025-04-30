@@ -20,13 +20,11 @@ class LoginPage extends Component
 
     public function login(){
       $data= $this->validate();
-        // dd($data);
       if(Auth::attempt($data)){
         return redirect()->route('teacher.profile')->with('success', 'Login successful!');
       }else{
         return redirect()->back();
       }
-
 
     }
     public function render()

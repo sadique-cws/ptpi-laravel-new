@@ -21,16 +21,19 @@ class TeacherSignup extends Component
     
 
     public function register(){
-        $this->validate();
-
+        $data=$this->validate();
+        // dd($data);
+        	
         try {
             $user = User::create([
                 'first_name' => $this->Fname,
                 'last_name' => $this->Lname,
                 'email' => $this->email,
-                'password' => bcrypt($this->password),
+                'password' => $this->password,
                 'role' => 'teacher',
             ]);
+
+            // dd($user);
 
             return redirect()->route('teacher.dashboard')->with('success', 'Registration successful!');
         }

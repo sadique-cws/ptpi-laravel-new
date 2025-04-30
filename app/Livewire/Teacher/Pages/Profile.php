@@ -36,6 +36,7 @@ class Profile extends Component
 
     #[Rule('nullable|string|max:255')]
     public $last_name;
+    
 
     public function mount(){
         $this->userId = Auth::id();

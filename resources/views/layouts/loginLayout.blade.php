@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+@livewireStyles
+   
+    
 </head>
 <body>
 
@@ -16,6 +18,6 @@
 </div>
     {{ $slot }}
 
-
+    @livewireScripts
 </body>
 </html>
