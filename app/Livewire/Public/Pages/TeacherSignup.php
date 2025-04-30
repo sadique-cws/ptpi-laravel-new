@@ -35,7 +35,7 @@ class TeacherSignup extends Component
 
             // dd($user);
 
-            return redirect()->route('teacher.dashboard')->with('success', 'Registration successful!');
+            return redirect()->route('public.login')->with('success', 'Registration successful!');
         }
         catch (\Exception $e) {
             $this->addError('general', 'An error occurred during registration. Please try again.');

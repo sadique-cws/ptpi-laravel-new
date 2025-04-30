@@ -1,5 +1,5 @@
 <div class="w-full p-2">
-    <div class=" bg-white rounded-lg shadow-md">
+    <div class="bg-white rounded-lg shadow-md">
         <!-- Profile Header -->
         <div class="relative">
             <div class="h-48 bg-gradient-to-r from-[#3E98C7] to-[#2A6F97] rounded-t-lg"></div>
@@ -28,18 +28,41 @@
                 <!-- Personal Information -->
                 <div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-4">Personal Information</h2>
-                    
-                    <!-- Name -->
+
+                    <!-- First Name -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">First Name</label>
-                        <input type="text" wire:model="first_name" class="w-full p-2 border rounded-md" placeholder="Enter first name">
-                        @error('first_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'first_name')
+                            <div class="flex items-center space-x-2">
+                                <input type="text" wire:model="first_name" class="w-full p-2 border rounded-md" placeholder="Enter first name">
+                                <button wire:click="saveField('first_name')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('first_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $first_name ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('first_name')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
 
+                    <!-- Last Name -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Last Name</label>
-                        <input type="text" wire:model="last_name" class="w-full p-2 border rounded-md" placeholder="Enter last name">
-                        @error('last_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'last_name')
+                            <div class="flex items-center space-x-2">
+                                <input type="text" wire:model="last_name" class="w-full p-2 border rounded-md" placeholder="Enter last name">
+                                <button wire:click="saveField('last_name')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('last_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $last_name ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('last_name')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Email -->
@@ -51,70 +74,118 @@
                     <!-- Phone -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Phone Number</label>
-                        <input type="text" wire:model="phone" class="w-full p-2 border rounded-md" placeholder="Enter phone number">
-                        @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'phone')
+                            <div class="flex items-center space-x-2">
+                                <input type="text" wire:model="phone" class="w-full p-2 border rounded-md" placeholder="Enter phone number">
+                                <button wire:click="saveField('phone')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $phone ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('phone')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
                 <!-- Additional Information -->
                 <div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-4">Additional Information</h2>
-                    
+
                     <!-- Gender -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Gender</label>
-                        <select wire:model="gender" class="w-full p-2 border rounded-md">
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                        @error('gender') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'gender')
+                            <div class="flex items-center space-x-2">
+                                <select wire:model="gender" class="w-full p-2 border rounded-md">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <button wire:click="saveField('gender')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('gender') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $gender ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('gender')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Language -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Preferred Language</label>
-                        <select wire:model="language" class="w-full p-2 border rounded-md">
-                            <option value="">Select Language</option>
-                            <option value="Hindi">Hindi</option>
-                            <option value="English">English</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        @error('language') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'language')
+                            <div class="flex items-center space-x-2">
+                                <select wire:model="language" class="w-full p-2 border rounded-md">
+                                    <option value="">Select Language</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="English">English</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <button wire:click="saveField('language')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('language') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $language ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('language')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Marital Status -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Marital Status</label>
-                        <select wire:model="marital_status" class="w-full p-2 border rounded-md">
-                            <option value="">Select Status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Unmarried">Unmarried</option>
-                        </select>
-                        @error('marital_status') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'marital_status')
+                            <div class="flex items-center space-x-2">
+                                <select wire:model="marital_status" class="w-full p-2 border rounded-md">
+                                    <option value="">Select Status</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Unmarried">Unmarried</option>
+                                </select>
+                                <button wire:click="saveField('marital_status')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('marital_status') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $marital_status ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('marital_status')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Religion -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-600 mb-1">Religion</label>
-                        <select wire:model="religion" class="w-full p-2 border rounded-md">
-                            <option value="">Select Religion</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Muslim">Muslim</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        @error('religion') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @if($editingField === 'religion')
+                            <div class="flex items-center space-x-2">
+                                <select wire:model="religion" class="w-full p-2 border rounded-md">
+                                    <option value="">Select Religion</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <button wire:click="saveField('religion')" class="bg-teal-600 text-white px-4 py-1 rounded-md hover:bg-teal-700">Save</button>
+                                <button wire:click="cancelEdit" class="bg-gray-300 text-gray-800 px-4 py-1 rounded-md hover:bg-gray-400">Cancel</button>
+                            </div>
+                            @error('religion') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        @else
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-800">{{ $religion ?: 'Not Provided' }}</span>
+                                <button wire:click="editField('religion')" class="text-teal-600 hover:text-teal-700">Edit</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
-            </div>
-
-            <!-- Save Button -->
-            <div class="mt-6 flex justify-end">
-                <button wire:click="save" class="bg-teal-600 text-white px-6 py-2 rounded-md hover:bg-teal-700 transition duration-200">
-                    Save Changes
-                </button>
             </div>
         </div>
     </div>

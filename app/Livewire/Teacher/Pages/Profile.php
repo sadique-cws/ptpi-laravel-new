@@ -36,6 +36,9 @@ class Profile extends Component
 
     #[Rule('nullable|string|max:255')]
     public $last_name;
+
+    public $editingField = null;
+    public $originalValues = [];
     
 
     public function mount(){
@@ -48,9 +51,57 @@ class Profile extends Component
         $this->religion = $user->religion;
         $this->first_name = $user->first_name;
         $this->last_name = $user->last_name;
+        $this->originalValues = $this->toArray();
+    }
+
+    public function editField($field)
+    {
+        $this->editingField = $field;
+        $this->originalValues[$field] = $this->$field;
+    }
+
+    public function cancelEdit()
+    {
+        if ($this->editingField) {
+            $this->{$this->editingField} = $this->originalValues[$this->editingField];
+        }
+        $this->editingField = null;
+        $this->resetErrorBag();
+    }
+
+    public function saveField($field)
+    {
+        $this->validateOnly($field);
+        $user = Auth::user();
+
+        if ($field === 'image' && $this->image) {
+            $path = $this->image->store('profile_images', 'public');
+            $user->image = $path;
+        } else {
+            $user->$field = $this->$field;
+        }
+
+        $user->save();
+        $this->editingField = null;
+        $this->originalValues[$field] = $this->$field;
+        $this->resetErrorBag();
     }
     public function render()
     {
         return view('livewire.teacher.pages.profile');
+    }
+
+    private function toArray()
+    {
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'phone' => $this->phone,
+            'gender' => $this->gender,
+            'language' => $this->language,
+            'marital_status' => $this->marital_status,
+            'religion' => $this->religion,
+            'image' => $this->image,
+        ];
     }
 }
