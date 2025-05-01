@@ -40,8 +40,10 @@
                     </label>
 
                     <!-- Loading Indicator -->
-                    <div wire:loading wire:target="image" class="absolute inset-0 flex items-center justify-center">
-                        <div class="spin animate-spin h-5 w-5 border-3 border-green-600"></div>
+                    <div wire:loading wire:target="image"
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 rounded-full">
+                        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+                        <span class="text-white text-sm mt-2">Uploading...</span>
                     </div>
 
                     @error('image')
@@ -145,18 +147,20 @@
 
                     <!-- Dropdown Fields -->
                     @foreach ([
-                        'gender' => ['Male', 'Female', 'Other'],
-                        'language' => ['Hindi', 'English', 'Other'],
-                        'marital_status' => ['Single', 'Married', 'Unmarried'],
-                        'religion' => ['Hindu', 'Muslim', 'Other']
-                    ] as $field => $options)
+        'gender' => ['Male', 'Female', 'Other'],
+        'language' => ['Hindi', 'English', 'Other'],
+        'marital_status' => ['Single', 'Married', 'Unmarried'],
+        'religion' => ['Hindu', 'Muslim', 'Other'],
+    ] as $field => $options)
                         <div class="space-y-2">
-                            <label class="text-sm font-medium text-gray-700">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
+                            <label
+                                class="text-sm font-medium text-gray-700">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
                             @if ($editingField === $field)
                                 <div class="relative group">
                                     <select wire:model="{{ $field }}"
                                         class="w-full px-4 py-2.5 rounded-lg border-gray-200 focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 transition-all duration-200">
-                                        <option value="">Select {{ ucwords(str_replace('_', ' ', $field)) }}</option>
+                                        <option value="">Select {{ ucwords(str_replace('_', ' ', $field)) }}
+                                        </option>
                                         @foreach ($options as $option)
                                             <option value="{{ $option }}">{{ $option }}</option>
                                         @endforeach

@@ -26,7 +26,7 @@ class Profile extends Component
     #[Rule('nullable|in:Hindi,English,Other')]
     public $language;
 
-    #[Rule('nullable|in:male,female,other')]
+    #[Rule('nullable|in:Male,Female,Other')]
     public $gender;
 
     #[Rule('nullable|in:Single,Married,Unmarried')]
@@ -118,7 +118,7 @@ class Profile extends Component
 
         switch ($field) {
             case 'language':
-                $user->language = ucfirst($this->language); // Capitalize first letter
+                $user->language = ucfirst($this->language);
                 break;
             case 'marital_status':
                 $user->marital_status = ucfirst($this->marital_status);

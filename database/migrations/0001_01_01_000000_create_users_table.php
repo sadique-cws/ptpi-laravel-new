@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->string('phone')->nullable();
             $table->string('age')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable(); 
+            $table->enum('gender', ['Male', 'Female', 'Other'])->nullable(); 
             $table->enum('role', ['teacher', 'admin', 'recruiter', 'exam-setter'])->default('teacher');
             $table->enum('religion', ['Hindu', 'Muslim', 'Other'])->nullable();
             $table->enum('language', ['Hindi', 'English', 'Other'])->nullable();
