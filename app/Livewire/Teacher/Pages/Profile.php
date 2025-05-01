@@ -17,7 +17,7 @@ class Profile extends Component
     public $success;
     public $userId;
 
-    #[Rule('nullable|image|mimes:jpeg,png,jpg,gif|max:2048')]
+    #[Rule('nullable|image|mimes:jpeg,png,jpg,gif')]
     public $image;
     
     #[Rule('nullable|digits:10')]
@@ -116,18 +116,28 @@ class Profile extends Component
         $this->validateOnly($field);
         $user = Auth::user();
 
-        if ($field === 'image' && $this->image) {
-            $path = $this->image->store('profile_images', 'public');
-            $user->image = $path;
-        } else {
-            $user->$field = $this->$field;
+        switch ($field) {
+            case 'language':
+                $user->language = ucfirst($this->language); // Capitalize first letter
+                break;
+            case 'marital_status':
+                $user->marital_status = ucfirst($this->marital_status);
+                break;
+            case 'religion':
+                $user->religion = ucfirst($this->religion);
+                break;
+            default:
+                $user->$field = $this->$field;
+                break;
         }
 
         $user->save();
         $this->editingField = null;
         $this->originalValues[$field] = $this->$field;
+        session()->flash('success', ucfirst($field) . ' updated successfully!');
         $this->resetErrorBag();
     }
+
     public function render()
     {
         return view('livewire.teacher.pages.profile');

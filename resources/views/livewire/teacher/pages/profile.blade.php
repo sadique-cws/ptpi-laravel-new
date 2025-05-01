@@ -144,18 +144,21 @@
                     </div>
 
                     <!-- Dropdown Fields -->
-                    @foreach (['gender' => ['Male', 'Female', 'Other'], 'language' => ['Hindi', 'English', 'Other'], 'marital_status' => ['Single', 'Married', 'Unmarried'], 'religion' => ['Hindu', 'Muslim', 'Other']] as $field => $options)
+                    @foreach ([
+                        'gender' => ['Male', 'Female', 'Other'],
+                        'language' => ['Hindi', 'English', 'Other'],
+                        'marital_status' => ['Single', 'Married', 'Unmarried'],
+                        'religion' => ['Hindu', 'Muslim', 'Other']
+                    ] as $field => $options)
                         <div class="space-y-2">
-                            <label
-                                class="text-sm font-medium text-gray-700">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
+                            <label class="text-sm font-medium text-gray-700">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
                             @if ($editingField === $field)
                                 <div class="relative group">
                                     <select wire:model="{{ $field }}"
                                         class="w-full px-4 py-2.5 rounded-lg border-gray-200 focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 transition-all duration-200">
-                                        <option value="">Select {{ ucwords(str_replace('_', ' ', $field)) }}
-                                        </option>
+                                        <option value="">Select {{ ucwords(str_replace('_', ' ', $field)) }}</option>
                                         @foreach ($options as $option)
-                                            <option value="{{ strtolower($option) }}">{{ $option }}</option>
+                                            <option value="{{ $option }}">{{ $option }}</option>
                                         @endforeach
                                     </select>
                                     <div class="absolute right-0 top-0 h-full flex items-center space-x-2 pr-2">
