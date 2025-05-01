@@ -4,6 +4,7 @@ namespace App\Livewire\Teacher\Pages;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use ImageKit\ImageKit;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -11,6 +12,9 @@ use Livewire\Component;
 #[Layout('layouts.teacherLayout')]
 class Profile extends Component
 {
+    use \Livewire\WithFileUploads;
+
+    public $success;
     public $userId;
 
     #[Rule('nullable|image|mimes:jpeg,png,jpg,gif|max:2048')]
@@ -67,6 +71,44 @@ class Profile extends Component
         }
         $this->editingField = null;
         $this->resetErrorBag();
+    }
+
+    public function uploadImageToImageKit(ImageKit $imageKit, $file)
+    {
+        $this->validateOnly('image');
+        $user = Auth::user();
+
+        try {
+            $fileName = time() . '_' . $file->getClientOriginalName();
+
+            // Upload to ImageKit
+            $response = $imageKit->uploadFile([
+                'file' => fopen($file->getRealPath(), 'r'),
+                'fileName' => $fileName,
+                'folder' => '/teacher_profiles',
+            ]);
+
+            if (isset($response->result)) {
+                $user->image = $response->result->url;
+                $user->save();
+                session()->flash('success', 'Profile image uploaded successfully!');
+                return true;
+            }
+    
+            $this->addError('image', 'Failed to upload image to ImageKit.');
+            return false;
+        } catch (\Exception $e) {
+            $this->addError('image', 'Error uploading image: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function updatedImage(ImageKit $imageKit)
+    {
+        if ($this->image) {
+            $this->uploadImageToImageKit($imageKit, $this->image);
+            $this->reset(['image']);
+        }
     }
 
     public function saveField($field)

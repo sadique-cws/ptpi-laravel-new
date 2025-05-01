@@ -12,12 +12,12 @@
 
 <body>
     <div class="w-full flex">
-        <div class="">
+        <div class="hidden md:block h-screen">
             <livewire:teacher.components.sidebar />
         </div>
         <div class="flex flex-col w-full min-h-screen bg-gray-100">
             <livewire:teacher.component.header/>
-           <div class="ml-72 p-2">
+           <div class="md:ml-72 p-2">
             {{ $slot}}
            </div>
         </div>
