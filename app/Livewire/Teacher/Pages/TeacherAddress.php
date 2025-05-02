@@ -3,6 +3,7 @@
 namespace App\Livewire\Teacher\Pages;
 
 use App\Models\Address;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -135,7 +136,7 @@ class TeacherAddress extends Component
             'current_post_office' => 'required|string',
         ]);
 
-        Address::updateOrCreate(
+        Address::find(Auth::id())->update(
             [
                 'user_id' => auth()->id(),
                 'pincode' => $this->current_pincode,
@@ -160,7 +161,7 @@ class TeacherAddress extends Component
             'permanent_post_office' => 'required|string',
         ]);
 
-        Address::updateOrCreate(
+        Address::find(Auth::id())->update(
             [
                 'user_id' => auth()->id(),
                 'address_type' => 'permanent',
