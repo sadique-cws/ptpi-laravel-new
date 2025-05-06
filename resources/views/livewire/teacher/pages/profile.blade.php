@@ -1,7 +1,6 @@
 <div class="p-1 sm:p-6 lg:p-2">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
 
-
         <!-- Profile Header -->
         <div class="relative">
             <div class="h-48 bg-gradient-to-r from-[#3E98C7] to-[#2A6F97] rounded-t-lg"></div>
@@ -207,5 +206,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mt-7">
+        <livewire:teacher.pages.teacher-address />
     </div>
 </div>
