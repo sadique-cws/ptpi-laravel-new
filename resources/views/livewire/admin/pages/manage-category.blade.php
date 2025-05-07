@@ -23,21 +23,23 @@
                     class="relative flex flex-col w-full h-full overflow-x-auto text-gray-700 bg-white rounded-lg bg-clip-border {{ $isModalOpen ? 'blur-sm' : '' }}">
                     <table class="w-full text-left table-auto min-w-max">
                         <thead>
-                            <tr>
-                                <th class="p-4 border-b border-slate-200 bg-slate-50">
+                            <tr class="">
+                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-16">
                                     <p class="text-sm font-normal leading-none text-slate-500">
                                         ID
                                     </p>
                                 </th>
-                                <th class="p-4 border-b border-slate-200 bg-slate-50">
+                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-1/3">
                                     <p class="text-sm font-normal leading-none text-slate-500">
                                         Title
                                     </p>
                                 </th>
-                                <th class="p-4 border-b border-slate-200 bg-slate-50">
-                                    <p class="text-sm font-normal leading-none text-slate-500">Description</p>
+                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-1/3">
+                                    <p class="text-sm font-normal leading-none text-slate-500">
+                                        Description
+                                    </p>
                                 </th>
-                                <th class="p-4 border-b border-slate-200 bg-slate-50">
+                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-32 text-right pr-8">
                                     <p class="text-sm font-normal leading-none text-slate-500">
                                         Action
                                     </p>
@@ -56,8 +58,8 @@
                                     <td class="p-4 py-5">
                                         <p class="text-sm text-slate-500">{{ $category->cat_description }}</p>
                                     </td>
-                                    <td class="p-4 py-5">
-                                        <div class="flex items-center gap-2">
+                                    <td class="p-4 py-5 text-right pr-8">
+                                        <div class="flex items-center justify-end gap-2">
                                             <!-- Edit Icon Button -->
                                             <button wire:click="edit({{ $category->id }})"
                                                 class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors duration-200"

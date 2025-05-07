@@ -11,7 +11,6 @@ class ManageSubject extends Component
 {
     public function mount(){
         $category = ClassCategory::all();
-        dd($category);
     }
     public function render()
     {
