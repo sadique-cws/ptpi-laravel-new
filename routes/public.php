@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", Homepage::class)->name("public.homepage");
 Route::get("/contact", Contactpage::class)->name("public.contact");
-Route::get("/login", LoginPage::class)->name("public.login");
+Route::get("/login", LoginPage::class)->name("login");
 Route::get("/recruiter/signup", RecruiterSignup::class)->name("public.recruiter.signup");
 Route::get("/teacher/signup", TeacherSignup::class)->name("public.teacher.signup");
 
