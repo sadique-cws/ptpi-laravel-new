@@ -136,18 +136,25 @@ class TeacherAddress extends Component
             'current_post_office' => 'required|string',
         ]);
 
-        Address::find(Auth::id())->update(
-            [
-                'user_id' => auth()->id(),
-                'pincode' => $this->current_pincode,
-                'state' => $this->current_state,
-                'district' => $this->current_district,
-                'address_type' => 'current', 
-                'post_office' => $this->current_post_office,
-            ]
-        );
+        $addressData = [
+            'user_id' => auth()->id(),
+            'pincode' => $this->current_pincode,
+            'state' => $this->current_state,
+            'district' => $this->current_district,
+            'post_office' => $this->current_post_office,
+            'address_type' => 'current'
+        ];
 
-        session()->flash('message', 'Current address updated successfully.');
+        if ($this->currentAddress) {
+            // Update existing address
+            $this->currentAddress->update($addressData);
+            $message = 'Current address updated successfully.';
+        } else {
+            Address::create($addressData);
+            $message = 'Current address added successfully.';
+        }
+
+        session()->flash('message', $message);
         $this->editingCurrentAddress = false;
         $this->loadAddresses();
     }
@@ -161,18 +168,24 @@ class TeacherAddress extends Component
             'permanent_post_office' => 'required|string',
         ]);
 
-        Address::find(Auth::id())->update(
-            [
-                'user_id' => auth()->id(),
-                'address_type' => 'permanent',
-                'pincode' => $this->permanent_pincode,
-                'state' => $this->permanent_state,
-                'district' => $this->permanent_district,
-                'post_office' => $this->permanent_post_office,
-            ]
-        );
+        $addressData = [
+            'user_id' => auth()->id(),
+            'pincode' => $this->permanent_pincode,
+            'state' => $this->permanent_state,
+            'district' => $this->permanent_district,
+            'post_office' => $this->permanent_post_office,
+            'address_type' => 'permanent'
+        ];
 
-        session()->flash('message', 'Permanent address updated successfully.');
+        if ($this->permanentAddress) {
+            $this->permanentAddress->update($addressData);
+            $message = 'Permanent address updated successfully.';
+        } else {
+            Address::create($addressData);
+            $message = 'Permanent address added successfully.';
+        }
+
+        session()->flash('message', $message);
         $this->editingPermanentAddress = false;
         $this->loadAddresses();
     }
