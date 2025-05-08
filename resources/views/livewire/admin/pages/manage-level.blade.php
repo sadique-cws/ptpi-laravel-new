@@ -8,8 +8,6 @@
                     </h2>
                 </div>
                 <div class="flex gap-3 items-center">
-                    <input type="text" wire:model.live.debounce.500ms="search" placeholder="Search levels..."
-                        class="border rounded px-3 py-2 w-full md:w-64">
                     <button type="button" wire:click="openModal"
                         class="bg-teal-700 hover:bg-teal-600 text-white font-bold px-4 py-2 rounded">
                         Add Level
@@ -18,7 +16,7 @@
             </div>
 
             <div class="relative">
-                <!-- Categories Table -->
+                <!-- Level Table -->
                 <div
                     class="relative flex flex-col w-full h-full overflow-x-auto text-gray-700 bg-white rounded-lg bg-clip-border {{ $isModalOpen ? 'blur-sm' : '' }}">
                     <table class="w-full text-left table-auto min-w-max">
@@ -39,11 +37,6 @@
                                         Level Code
                                     </p>
                                 </th>
-                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-1/3">
-                                    <p class="text-sm font-normal leading-none text-slate-500">
-                                        Description
-                                    </p>
-                                </th>
                                 <th class="p-4 border-b border-slate-200 bg-slate-50 w-32 text-right pr-8">
                                     <p class="text-sm font-normal leading-none text-slate-500">
                                         Action
@@ -52,21 +45,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($categories as $category)
+                            @forelse($levels as $level)
                                 <tr class="hover:bg-slate-50 border-b border-slate-200">
                                     <td class="p-4 py-5">
                                         <p class="block font-semibold text-sm text-slate-800">{{ $loop->iteration }}</p>
                                     </td>
                                     <td class="p-4 py-5">
-                                        <p class="text-sm text-slate-500">{{ $category->cat_title }}</p>
+                                        <p class="text-sm text-slate-500">{{ $level->level_name }}</p>
                                     </td>
                                     <td class="p-4 py-5">
-                                        <p class="text-sm text-slate-500">{{ $category->cat_description }}</p>
+                                        <p class="text-sm text-slate-500">{{ $level->level_code }}</p>
                                     </td>
                                     <td class="p-4 py-5 text-right pr-8">
                                         <div class="flex items-center justify-end gap-2">
                                             <!-- Edit Icon Button -->
-                                            <button wire:click="edit({{ $category->id }})"
+                                            <button wire:click="edit({{ $level->id }})"
                                                 class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors duration-200"
                                                 title="Edit Category">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -75,7 +68,7 @@
                                             </button>
 
                                             <!-- Delete Icon Button -->
-                                            <button wire:click="destroy({{ $category->id }})"
+                                            <button wire:click="destroy({{ $level->id }})"
                                                 wire:confirm="Are you sure you want to delete this category?"
                                                 class="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-full transition-colors duration-200"
                                                 title="Delete Category">
@@ -97,11 +90,11 @@
 
                         </tbody>
                     </table>
-                    <div class="flex justify-between items-center px-4 py-3 gap-4">
+                    {{-- <div class="flex justify-between items-center px-4 py-3 gap-4">
                         <div class="text-sm text-slate-500">
                             Showing
-                            <b>{{ $categories->firstItem() }}-{{ $categories->lastItem() }}</b>
-                            of {{ $categories->total() }}
+                            <b>{{ $levels->firstItem() }}-{{ $levels->lastItem() }}</b>
+                            of {{ $levels->total() }}
                         </div>
 
                         <div class="flex space-x-1">
@@ -109,9 +102,9 @@
                                 class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease {{ $categories->onFirstPage() ? 'opacity-50 cursor-not-allowed' : '' }}">
                                 Prev
                             </button>
-                            @foreach ($categories->getUrlRange(1, $categories->lastPage()) as $page => $url)
+                            @foreach ($levels->getUrlRange(1, $levels->lastPage()) as $page => $url)
                                 <button wire:click="gotoPage({{ $page }})"
-                                    class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal {{ $categories->currentPage() === $page ? 'text-white bg-slate-800 border-slate-800 hover:bg-slate-600 hover:border-slate-600' : 'text-slate-500 bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-400' }} border rounded transition duration-200 ease">
+                                    class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal {{ $levels->currentPage() === $page ? 'text-white bg-slate-800 border-slate-800 hover:bg-slate-600 hover:border-slate-600' : 'text-slate-500 bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-400' }} border rounded transition duration-200 ease">
                                     {{ $page }}
                                 </button>
                             @endforeach
@@ -120,7 +113,7 @@
                                 Next
                             </button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 @if ($isModalOpen)
@@ -137,7 +130,7 @@
                             <!-- Header -->
                             <div class="flex items-center justify-between pb-4 border-b border-gray-100">
                                 <h3 class="text-xl font-semibold text-gray-800">
-                                    {{ $editingCategoryId ? 'Edit Category' : 'Add New Category' }}
+                                    {{ $editingLevelId ? 'Edit Category' : 'Add New Category' }}
                                 </h3>
                                 <button wire:click="closeModal"
                                     class="p-1.5 hover:bg-gray-50 rounded-lg text-gray-500 hover:text-gray-700 transition-colors">
@@ -152,7 +145,7 @@
                             <form wire:submit.prevent="storeOrUpdate" class="space-y-5 mt-6">
                                 <!-- Title Input -->
                                 <div class="space-y-2">
-                                    <label for="cat_title" class="block text-sm font-medium text-gray-700">Category
+                                    <label for="cat_title" class="block text-sm font-medium text-gray-700">Level
                                         title</label>
                                     <input type="text" wire:model="cat_title" id="cat_title"
                                         class="block w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-purple-500
@@ -198,7 +191,7 @@
                                     <button type="submit"
                                         class="px-5 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white
                                    transition-colors duration-200 shadow-sm hover:shadow-md">
-                                        {{ $editingCategoryId ? 'Update Category' : 'Create Category' }}
+                                        {{ $editingLevelId ? 'Update Category' : 'Create Category' }}
                                     </button>
                                 </div>
                             </form>

@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 class ManageCategory extends Component
 {
     use WithPagination;
-
+    public $categories= [];
     #[Validate( 'required|string|max:255')]
     public $cat_title = '';
     #[Validate('nullable|string|max:255')]
@@ -83,9 +83,9 @@ class ManageCategory extends Component
 
     public function render()
     {
-        $categories = ClassCategory::where('cat_name', 'like', '%' . $this->search . '%')
+        $this->categories = ClassCategory::where('cat_name', 'like', '%' . $this->search . '%')
             ->orWhere('description', 'like', '%' . $this->search . '%')
             ->paginate($this->perPage);
-        return view('livewire.admin.pages.manage-category', compact('categories'));
+        return view('livewire.admin.pages.manage-category');
     }
 }
