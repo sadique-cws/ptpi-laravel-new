@@ -25,23 +25,15 @@ class ManageCategory extends Component
 
     public function storeOrUpdate()
     {
-        $this->validate();
+        $data = $this->validate();
 
         if ($this->editingCategoryId) {
             $category = ClassCategory::find($this->editingCategoryId);
             if ($category) {
-                $category->update([
-                    'cat_title' => $this->cat_title,
-                    'cat_description' => $this->cat_description,
-                ]);
-                $this->dispatch('notice', type: 'info', text: 'Category updated successfully!');
+                $category->update($data);
             }
         } else {
-            ClassCategory::create([
-                'cat_title' => $this->cat_title,
-                'cat_description' => $this->cat_description,
-            ]);
-            $this->dispatch('notice', type: 'info', text: 'Category added successfully!');
+            ClassCategory::create($data);
         }
 
         $this->resetForm();
