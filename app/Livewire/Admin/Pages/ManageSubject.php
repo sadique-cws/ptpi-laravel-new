@@ -22,7 +22,7 @@ class ManageSubject extends Component
     public $category_id = '';
 
     #[Validate('required|string|max:255')]
-    public $name = '';
+    public $title = '';
 
     public function openModal()
     {
@@ -37,7 +37,7 @@ class ManageSubject extends Component
         $subject = Subject::findOrFail($subjectId);
         
         $this->category_id = $subject->category_id;
-        $this->name = $subject->name;
+        $this->title = $subject->title;
         $this->editingSubjectId = $subjectId;
         $this->modalTitle = 'Edit Subject';
         $this->showModal = true;
@@ -50,21 +50,13 @@ class ManageSubject extends Component
 
         if ($this->editingSubjectId) {
             $subject = Subject::findOrFail($this->editingSubjectId);
-            $subject->update([
-                'category_id' => $this->category_id,
-                'name' => $this->name,
-            ]);
+            $subject->update($data);
             
             session()->flash('success', 'Subject updated successfully.');
         } else {
-            Subject::create([
-                'category_id' => $this->category_id,
-                'title' => $this->name,
-            ]);
-            
+            Subject::create($data);
             session()->flash('success', 'Subject created successfully.');
         }
-
         $this->closeModal();
     }
 
@@ -85,7 +77,7 @@ class ManageSubject extends Component
 
     private function resetForm()
     {
-        $this->reset('category_id', 'name', 'editingSubjectId');
+        $this->reset('category_id', 'title', 'editingSubjectId');
         $this->resetErrorBag();
     }
 
