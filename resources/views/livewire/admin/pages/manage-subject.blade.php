@@ -1,9 +1,9 @@
-<div class="container mx-auto px-4 py-8">
+<div class="container">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Manage Subjects</h1>
         <button 
             wire:click="openModal"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200"
+            class="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200"
         >
             Add New Subject
         </button>
@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="bg-white shadow rounded-lg overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
@@ -29,8 +29,8 @@
                 @forelse ($subjects as $subject)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $subject->id }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $subject->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $subject->category->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">{{ $subject->title }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $subject->category->cat_title }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <button 
                                 wire:click="editSubject({{ $subject->id }})"
@@ -55,9 +55,9 @@
             </tbody>
         </table>
         
-        <div class="px-6 py-4">
+        {{-- <div class="px-6 py-4">
             {{ $subjects->links() }}
-        </div>
+        </div> --}}
     </div>
 
     <!-- Modal -->

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Subject extends Model
 {
@@ -10,4 +11,8 @@ class Subject extends Model
         "category_id",
         "title"
     ];
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(ClassCategory::class, 'category_id');
+    }
 }
