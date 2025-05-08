@@ -51,6 +51,10 @@
                         class="px-4 py-2 rounded bg-teal-600 text-white w-full bg-teal-600 text-white py-3 rounded-xl transition duration-200 flex items-center justify-center hover:bg-teal-700">Log
                         In</button>
                 </form>
+
+                <a href="{{ route('auth.google') }}" class="btn btn-danger">
+                    <i class="fab fa-google"></i> Login with Google
+                </a>
                 <div class="mt-6 space-y-4">
                     <div class="flex items-center">
                         <hr class="flex-grow border-gray-300"><span class="px-4 text-sm text-gray-500">Or</span>
@@ -64,6 +68,8 @@
                             as Recruiter</a>
                     </div>
                 </div>
+
+
             </div>
         </div>
         <div class="hidden md:flex w-1/2 flex-col justify-center pl-16 lg:pl-24">
@@ -101,6 +107,7 @@
                     <h3 class="text-gray-700 font-bold text-xl">Go to Dashboard</h3>
                     <p class="text-gray-500 mt-1">Access your personalized dashboard</p>
                 </div>
+
             </div>
         </div>
     </div>

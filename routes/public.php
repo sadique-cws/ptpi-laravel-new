@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use App\Livewire\Public\Pages\Contactpage;
 use App\Livewire\Public\Pages\Homepage;
 use App\Livewire\Public\Pages\LoginPage;
@@ -18,4 +19,8 @@ Route::get("/recruiter/signup", RecruiterSignup::class)->name("public.recruiter.
 Route::get("/teacher/signup", TeacherSignup::class)->name("public.teacher.signup");
 
 
+
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 ?>

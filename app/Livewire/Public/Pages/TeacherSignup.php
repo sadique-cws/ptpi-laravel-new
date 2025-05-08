@@ -10,7 +10,7 @@ use Livewire\Component;
 #[Layout("layouts.loginLayout")]
 class TeacherSignup extends Component
 {
-    #[Validate('required|string|max:255')] 
+    #[Validate('required|string|max:255')]
     public $Fname;
     #[Validate('required|string|max:255')]
     public $Lname;
@@ -18,12 +18,12 @@ class TeacherSignup extends Component
     public $email;
     #[Validate('required|string|min:8|regex:/[0-9]/|regex:/[^A-Za-z0-9]/')]
     public $password;
-    
+
 
     public function register(){
         $data=$this->validate();
         // dd($data);
-        	
+
         try {
             $user = User::create([
                 'first_name' => $this->Fname,
@@ -35,7 +35,7 @@ class TeacherSignup extends Component
 
             // dd($user);
 
-            return redirect()->route('public.login')->with('success', 'Registration successful!');
+            return redirect()->route('login')->with('success', 'Registration successful!');
         }
         catch (\Exception $e) {
             $this->addError('general', 'An error occurred during registration. Please try again.');

@@ -82,7 +82,7 @@
                     </button>
                     <div class="flex gap-2"><a
                             class="flex items-center gap-2 px-3 py-2.5 font-medium text-teal-600 transition-all duration-300 border-2 border-teal-500 rounded-lg hover:bg-purple-50 hover:shadow-md"
-                            href="{{route('public.login')}}"><svg stroke="currentColor" fill="none" stroke-width="2"
+                            href="{{route('login')}}"><svg stroke="currentColor" fill="none" stroke-width="2"
                                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"
                                 height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
