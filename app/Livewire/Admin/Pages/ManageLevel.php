@@ -33,6 +33,7 @@ class ManageLevel extends Component
         }
 
         $this->resetForm();
+        $this->isModalOpen = false;
     }
 
     public function edit($id)
