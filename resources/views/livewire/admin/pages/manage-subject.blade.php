@@ -62,68 +62,84 @@
 
     <!-- Modal -->
     @if ($showModal)
-        <div class="fixed inset-0 z-50 overflow-y-auto">
-            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 transition-opacity" wire:click="closeModal">
-                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                </div>
-                
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                
-                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
-                                    {{ $modalTitle }}
-                                </h3>
-                                
-                                <form wire:submit.prevent="saveSubject">
-                                    <div class="mb-4">
-                                        <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                                        <select
-                                            wire:model="category_id"
-                                            id="category_id"
-                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                                        >
-                                            <option value="">Select a category</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->cat_title }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('category_id') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                    </div>
-                                    
-                                    <div class="mb-4">
-                                        <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Subject Name</label>
-                                        <input
-                                            type="text"
-                                            wire:model="title"
-                                            id="title"
-                                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                                            placeholder="Enter subject name"
-                                        >
-                                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                    </div>
-                                    
-                                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                        <button
-                                            type="submit"
-                                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
-                                        >
-                                            Save
-                                        </button>
-                                        <button
-                                            type="button"
-                                            wire:click="closeModal"
-                                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                        >
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </form>
+        <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <!-- Changed this div's classes to better center content -->
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <!-- Background overlay -->
+                <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 backdrop-blur-sm" wire:click="closeModal"></div>
+
+                <!-- Modal panel - removed sm:align-bottom and adjusted alignment classes -->
+                <div class="relative w-full max-w-lg p-6 mx-auto text-left transition-all transform bg-white rounded-2xl shadow-xl">
+                    <!-- Modal header -->
+                    <div class="absolute top-0 right-0 pt-4 pr-4">
+                        <button wire:click="closeModal" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="mt-3">
+                        <h3 class="text-xl font-semibold leading-6 text-gray-900 mb-6" id="modal-title">
+                            {{ $modalTitle }}
+                        </h3>
+                        
+                        <form wire:submit.prevent="saveSubject" class="space-y-6">
+                            <!-- Category Select -->
+                            <div class="relative">
+                                <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Category
+                                </label>
+                                <select
+                                    wire:model="category_id"
+                                    id="category_id"
+                                    class="w-full p-2 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
+                                >
+                                    <option value="">Select a category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->cat_title }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id') 
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
-                        </div>
+
+                            <!-- Subject Name Input -->
+                            <div class="relative">
+                                <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Subject Name
+                                </label>
+                                <input
+                                    type="text"
+                                    wire:model="title"
+                                    id="title"
+                                    class="w-full p-2 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition duration-200"
+                                    placeholder="Enter subject name"
+                                >
+                                @error('title') 
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-3 space-y-reverse sm:space-y-0 mt-6">
+                                <button
+                                    type="button"
+                                    wire:click="closeModal"
+                                    class="inline-flex justify-center px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    class="inline-flex justify-center px-4 py-2.5 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-lg shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                                >
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
