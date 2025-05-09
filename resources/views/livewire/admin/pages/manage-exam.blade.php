@@ -50,18 +50,18 @@
                                 {{ ucfirst($exam->status) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <button 
-                                wire:click="edit({{ $exam->id }})"
-                                class="text-indigo-600 hover:text-indigo-900 mr-3"
-                            >
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3 flex items-center">
+                            <a href="{{ route('admin.exam.questions', $exam->id) }}" 
+                               class="text-teal-600 hover:text-teal-900 flex items-center">
+                                <span>Questions</span>
+                            </a>
+                            <button wire:click="edit({{ $exam->id }})"
+                                class="text-indigo-600 hover:text-indigo-900">
                                 Edit
                             </button>
-                            <button 
-                                wire:click="destroy({{ $exam->id }})"
+                            <button wire:click="destroy({{ $exam->id }})"
                                 wire:confirm="Are you sure you want to delete this exam set?"
-                                class="text-red-600 hover:text-red-900"
-                            >
+                                class="text-red-600 hover:text-red-900">
                                 Delete
                             </button>
                         </td>
