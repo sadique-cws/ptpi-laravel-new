@@ -12,7 +12,7 @@ class ExamSet extends Model
         'name',
         'description',
         'category_id',
-        'subject_id',
+        'subject',
         'level_id',
         'total_marks',
         'duration',
@@ -25,23 +25,18 @@ class ExamSet extends Model
         'status' => 'string'
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function category(): BelongsTo
+    public function category()
     {
         return $this->belongsTo(ClassCategory::class, 'category_id');
     }
 
-    public function subject(): BelongsTo
-    {
-        return $this->belongsTo(Subject::class);
-    }
-
-    public function level(): BelongsTo
+    public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -30,7 +30,7 @@
 
             <!-- Subject -->
             <li>
-                <a href="{{  route('admin.subjects')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
+                <a wire:navigate href="{{  route('admin.subjects')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                     </svg>
@@ -39,7 +39,7 @@
             </li>
             {{-- Level --}}
             <li>
-                <a href="{{  route('admin.levels')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
+                <a wire:navigate href="{{  route('admin.levels')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                     </svg>
@@ -47,6 +47,15 @@
                 </a>
             </li>
 
+            <!-- Question -->
+            <li>
+                <a wire:navigate href="{{route('admin.exam')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-3">Manage Exam</span>
+                </a>
+            </li>
             <!-- Question -->
             <li>
                 <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700 group">
