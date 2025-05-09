@@ -24,7 +24,7 @@
                     <table class="w-full text-left table-auto min-w-max">
                         <thead>
                             <tr class="">
-                                <th class="p-4 border-b border-slate-200 bg-slate-50 w-16">
+                                <th class="px-6 border-b border-slate-200 bg-slate-50 w-16">
                                     <p class="text-sm font-normal leading-none text-slate-500">
                                         ID
                                     </p>
@@ -49,16 +49,16 @@
                         <tbody>
                             @forelse($categories as $category)
                                 <tr class="hover:bg-slate-50 border-b border-slate-200">
-                                    <td class="p-4 py-5">
+                                    <td class="px-6 py-3">
                                         <p class="block font-semibold text-sm text-slate-800">{{ $loop->iteration }}</p>
                                     </td>
-                                    <td class="p-4 py-5">
+                                    <td class="px-4 py-3">
                                         <p class="text-sm text-slate-500">{{ $category->cat_title }}</p>
                                     </td>
-                                    <td class="p-4 py-5">
+                                    <td class="px-4 py-3">
                                         <p class="text-sm text-slate-500">{{ $category->cat_description }}</p>
                                     </td>
-                                    <td class="p-4 py-5 text-right pr-8">
+                                    <td class="px-4 py-3 text-right pr-8">
                                         <div class="flex items-center justify-end gap-2">
                                             <!-- Edit Icon Button -->
                                             <button wire:click="edit({{ $category->id }})"
