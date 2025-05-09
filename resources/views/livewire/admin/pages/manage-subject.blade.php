@@ -1,6 +1,6 @@
 <div class="container">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold text-gray-800">Manage Subjects</h1>
+        <h1 class="text-2xl font-semibold text-gray-600 border-teal-600 border-l-4 pl-2">Manage Subjects</h1>
         <button 
             wire:click="openModal"
             class="bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200"

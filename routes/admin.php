@@ -6,6 +6,7 @@ use App\Livewire\Admin\Pages\ManageExam;
 use App\Livewire\Admin\Pages\ManageLevel;
 use App\Livewire\Admin\Pages\ManageQuestion;
 use App\Livewire\Admin\Pages\ManageSubject;
+use App\Livewire\Admin\Pages\ManageTeacher;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,5 +17,6 @@ Route::middleware(["userRole","auth"])->group(function(){
     Route::get("/admin/manage-levels",ManageLevel::class)->name("admin.levels");
     Route::get("/admin/manage-exam",ManageExam::class)->name("admin.exam");
     Route::get("/admin/manage-question",ManageQuestion::class)->name("admin.question");
+    Route::get("/admin/manage-teacher",ManageTeacher::class)->name("admin.teacher");
 });
 ?>

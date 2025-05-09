@@ -38,16 +38,16 @@
                         <tbody>
                             @forelse($levels as $level)
                                 <tr class="hover:bg-slate-50 border-b border-slate-200">
-                                    <td class="p-4 py-5">
+                                    <td class="px-5 py-3">
                                         <p class="block font-semibold text-sm text-slate-800">{{ $loop->iteration }}</p>
                                     </td>
-                                    <td class="p-4 py-5">
+                                    <td class="px-5 py-3">
                                         <p class="text-sm text-slate-500">{{ $level->level_name }}</p>
                                     </td>
-                                    <td class="p-4 py-5">
+                                    <td class="px-5 py-3">
                                         <p class="text-sm text-slate-500">{{ $level->level_code }}</p>
                                     </td>
-                                    <td class="p-4 py-5 text-right pr-8">
+                                    <td class="px-5 py-3 text-right pr-8">
                                         <div class="flex items-center justify-end gap-2">
                                             <button wire:click="edit({{ $level->id }})"
                                                 class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors duration-200">
