@@ -105,48 +105,62 @@
     <!-- Question Modal -->
     @if ($isModalOpen)
         <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="flex items-center justify-center min-h-screen p-4">
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" wire:click="closeModal"></div>
 
-                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="relative bg-white rounded-xl shadow-xl transform transition-all w-full max-w-4xl">
+                    <!-- Close button -->
+                    <button 
+                        wire:click="closeModal"
+                        class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition-colors"
+                    >
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
                     <form wire:submit.prevent="storeOrUpdate" class="p-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-6">
-                            {{ $editingQuestionId ? 'Edit Question' : 'Add New Question' }}
-                        </h3>
+                        <!-- Header -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-900">
+                                {{ $editingQuestionId ? 'Edit Question' : 'Add New Question' }}
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">Fill in the question details below</p>
+                        </div>
 
                         <!-- Question Text -->
-                        <div class="mb-6">
-                            <label for="question_text" class="block text-sm font-medium text-gray-700 mb-1">
+                        <div class="mb-8">
+                            <label for="question_text" class="block text-sm font-medium text-gray-700 mb-2">
                                 Question Text
                             </label>
                             <textarea 
                                 wire:model="question_text" 
                                 id="question_text" 
                                 rows="3"
-                                class="w-full p-3 border rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                                class="w-full p-4 border rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 resize-none"
                                 placeholder="Enter your question here..."
                             ></textarea>
                             @error('question_text')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Options Grid -->
-                        <div class="mb-6">
+                        <div class="mb-8">
                             <label class="block text-sm font-medium text-gray-700 mb-3">
                                 Options
                             </label>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 @foreach ($options as $index => $option)
-                                    <div class="bg-gray-50 p-4 rounded-lg">
-                                        <div class="flex items-center gap-3">
-                                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center font-medium text-gray-700">
+                                    <div class="bg-gray-50 rounded-xl transition-all hover:bg-gray-100/80">
+                                        <div class="flex items-center p-4 gap-4">
+                                            <span class="flex-shrink-0 w-10 h-10 rounded-lg bg-white border-2 border-gray-300 flex items-center justify-center font-semibold text-gray-700 shadow-sm">
                                                 {{ chr(65 + $index) }}
                                             </span>
                                             <input 
                                                 type="text" 
                                                 wire:model="options.{{ $index }}"
-                                                class="flex-1 p-2 border rounded-lg border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                                                class="flex-1 p-3 border rounded-lg border-gray-300 bg-white shadow-sm focus:border-teal-500 focus:ring-teal-500"
                                                 placeholder="Enter option {{ chr(65 + $index) }}"
                                             >
                                         </div>
@@ -154,47 +168,55 @@
                                 @endforeach
                             </div>
                             @error('options')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <!-- Correct Option -->
-                        <div class="mb-6">
+                        <!-- Modernized Correct Option -->
+                        <div class="mb-8">
                             <label class="block text-sm font-medium text-gray-700 mb-3">
-                                Correct Option
+                                Select Correct Option
                             </label>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 @foreach ($options as $index => $option)
                                     <button 
                                         type="button"
                                         wire:click="$set('correct_options', '{{ chr(65 + $index) }}')"
-                                        class="p-3 rounded-lg border-2 transition-all {{ $correct_options === chr(65 + $index) 
+                                        class="relative p-4 rounded-xl border-2 transition-all duration-200 group {{ $correct_options === chr(65 + $index) 
                                             ? 'border-teal-500 bg-teal-50 text-teal-700' 
-                                            : 'border-gray-300 hover:border-gray-400' }}"
+                                            : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50' }}"
                                     >
-                                        <span class="font-medium">Option {{ chr(65 + $index) }}</span>
+                                        @if($correct_options === chr(65 + $index))
+                                            <div class="absolute top-2 right-2 text-teal-500">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                        @endif
+                                        <span class="text-lg font-bold block mb-1">Option {{ chr(65 + $index) }}</span>
+                                        <span class="text-sm text-gray-500 block truncate">{{ $option ?: 'Not filled yet' }}</span>
                                     </button>
                                 @endforeach
                             </div>
                             @error('correct_options')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <!-- Actions -->
-                        <div class="mt-8 flex justify-end space-x-3">
+                        <div class="mt-8 flex justify-end items-center gap-3">
                             <button 
                                 type="button" 
                                 wire:click="closeModal"
-                                class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                                class="px-6 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all"
                             >
                                 Cancel
                             </button>
                             <button 
                                 type="submit"
-                                class="px-4 py-2 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-lg hover:bg-teal-700"
+                                class="px-6 py-2.5 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all"
                             >
-                                {{ $editingQuestionId ? 'Update Question' : 'Add Question' }}
+                                {{ $editingQuestionId ? 'Update Question' : 'Save Question' }}
                             </button>
                         </div>
                     </form>
