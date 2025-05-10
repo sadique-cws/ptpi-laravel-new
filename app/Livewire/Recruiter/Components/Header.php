@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Recruiter\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Header extends Component
@@ -23,6 +24,12 @@ class Header extends Component
     public function updatedSearch()
     {
         $this->dispatch('search-updated', $this->search);
+    }
+    public function logout(){
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect()->route('login');
     }
     public function render()
     {
