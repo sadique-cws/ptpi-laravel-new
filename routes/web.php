@@ -25,6 +25,8 @@ require __DIR__.'/public.php';
 // import admin routes
 require __DIR__.'/admin.php';
 
-
 // import teacher routes
 require __DIR__.'/teacher.php';
+
+// import recruiter routes
+require __DIR__.'/recruiter.php';
