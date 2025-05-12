@@ -16,7 +16,7 @@
                         <div class="absolute -bottom-10 left-6">
                             <div class="relative">
                                 @if($teacher->image)
-                                    <img src="{{ asset('storage/' . $teacher->image) }}" 
+                                    <img src="{{ asset($teacher->image) }}" 
                                          alt="{{ $teacher->first_name }}" 
                                          class="w-20 h-20 rounded-xl object-cover border-4 border-white shadow-sm">
                                 @else
