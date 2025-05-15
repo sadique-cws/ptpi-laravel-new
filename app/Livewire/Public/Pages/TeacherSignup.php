@@ -30,12 +30,7 @@ class TeacherSignup extends Component
 
     public function submitRegistrationForm()
     {
-        $this->validate([
-            'Fname' => 'required|string|max:255',
-            'Lname' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|regex:/[0-9]/|regex:/[^A-Za-z0-9]/',
-        ]);
+        $this->validate();
 
         $this->sendOtp();
     }
@@ -53,7 +48,7 @@ class TeacherSignup extends Component
         ]);
 
         $this->verificationId = $verification->id;
-        $verification->notify(new OtpVerificationNotification($otp, $this->Fname));
+        $verification->notify(new OtpVerificationNotification($otp));
 
         $this->showOtpForm = true;
         
