@@ -29,31 +29,86 @@
 
                 @if (!$showOtpForm)
                     <form wire:submit="submitRegistrationForm" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">First Name</label>
-                            <input type="text" wire:model="Fname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('Fname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">First Name</label>
+                                <div class="relative">
+                                    <div class="w-full">
+                                        <input type="text" 
+                                               wire:model="Fname" 
+                                               class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                               placeholder="Enter your first name">
+                                        @error('Fname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" 
+                                             class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Last Name</label>
+                                <div class="relative">
+                                    <div class="w-full">
+                                        <input type="text" 
+                                               wire:model="Lname" 
+                                               class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                               placeholder="Enter your last name">
+                                        @error('Lname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" 
+                                             class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Last Name</label>
-                            <input type="text" wire:model="Lname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('Lname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                            <div class="relative">
+                                <div class="w-full">
+                                    <input type="email" 
+                                           wire:model="email" 
+                                           class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                           placeholder="Enter your email">
+                                    @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" 
+                                         class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" wire:model="email" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+                            <div class="relative">
+                                <div class="w-full">
+                                    <input type="password" 
+                                           wire:model="password" 
+                                           class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                           placeholder="Enter your password">
+                                    @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                </div>
+                                <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" 
+                                         height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"></path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" wire:model="password" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                        </div>
-
-                        <button type="submit" class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                        <button type="submit" 
+                                class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
                             Sign Up
                         </button>
                     </form>
