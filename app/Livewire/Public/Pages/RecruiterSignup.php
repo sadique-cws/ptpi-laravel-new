@@ -111,6 +111,6 @@ class RecruiterSignup extends Component
     }
     public function render()
     {
-        return view('livewire.public.pages.teacher-signup');
+        return view('livewire.public.pages.recruiter-signup');
     }
 }

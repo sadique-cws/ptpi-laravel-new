@@ -29,28 +29,78 @@
 
                 @if (!$showOtpForm)
                     <form wire:submit="submitRegistrationForm" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">First Name</label>
-                            <input type="text" wire:model="Fname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('Fname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">First Name</label>
+                                <div class="relative">
+                                    <div class="w-full">
+                                        <input type="text" 
+                                               wire:model="Fname" 
+                                               class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                               placeholder="Enter your first name">
+                                        @error('Fname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <svg class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path fill="currentColor" d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Last Name</label>
+                                <div class="relative">
+                                    <div class="w-full">
+                                        <input type="text" 
+                                               wire:model="Lname" 
+                                               class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                               placeholder="Enter your last name">
+                                        @error('Lname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                        <svg class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path fill="currentColor" d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Last Name</label>
-                            <input type="text" wire:model="Lname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('Lname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+                            <div class="relative">
+                                <div class="w-full">
+                                    <input type="email" 
+                                           wire:model="email" 
+                                           class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                           placeholder="Enter your email address">
+                                    @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <svg class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" wire:model="email" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" wire:model="password" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                            @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+                            <div class="relative">
+                                <div class="w-full">
+                                    <input type="password" 
+                                           wire:model="password" 
+                                           class="w-full border-2 text-sm rounded-xl p-3 pr-10 transition-colors border-teal-600 focus:border-teal-600"
+                                           placeholder="Enter your password">
+                                    @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                                    <svg class="text-teal-600" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path fill="currentColor" d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
@@ -82,7 +132,7 @@
                 @endif
 
                 <div class="mt-6 text-center">
-                    <a href="{{ route('public.teacher.signup') }}"
+                    <a wire:navigate href="{{ route('public.teacher.signup') }}"
                         class="w-full inline-flex items-center justify-center px-4 py-3 bg-teal-600 text-sm font-medium rounded-xl text-white hover:bg-teal-700 transition duration-200">
                         Sign up as Teacher
                     </a>
@@ -96,10 +146,54 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('login') }}"
+                    <a wire:navigate href="{{ route('login') }}"
                         class="mt-4 w-full inline-flex items-center justify-center px-4 py-3 border border-teal-600 text-sm font-medium rounded-xl text-teal-600 bg-white hover:bg-teal-50 transition duration-200">
                         Already have an account? Sign in
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline section -->
+        <div class="hidden md:flex w-1/2 flex-col justify-center pl-16 lg:pl-24">
+            <!-- Step 1 -->
+            <div class="flex items-start space-x-4 mb-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full {{ !$showOtpForm ? 'bg-teal-600 text-white' : 'bg-gray-300 text-gray-600' }} font-bold text-lg">
+                        1
+                    </div>
+                    <div class="h-16 w-1 {{ !$showOtpForm ? 'bg-teal-600' : 'bg-gray-300' }}"></div>
+                </div>
+                <div class="pt-2">
+                    <h3 class="text-gray-700 font-bold text-xl">Create Account</h3>
+                    <p class="text-gray-500 mt-1">Fill in your details to create your account</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex items-start space-x-4 mb-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full {{ $showOtpForm ? 'bg-teal-600 text-white' : 'bg-gray-300 text-gray-600' }} font-bold text-lg">
+                        2
+                    </div>
+                    <div class="h-16 w-1 bg-gray-300"></div>
+                </div>
+                <div class="pt-2">
+                    <h3 class="text-gray-700 font-bold text-xl">Verify Email</h3>
+                    <p class="text-gray-500 mt-1">Confirm your email address</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex items-start space-x-4">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold text-lg">
+                        3
+                    </div>
+                </div>
+                <div class="pt-2">
+                    <h3 class="text-gray-700 font-bold text-xl">Complete Profile</h3>
+                    <p class="text-gray-500 mt-1">Set up your recruiter profile</p>
                 </div>
             </div>
         </div>
