@@ -108,8 +108,17 @@
                         </div>
 
                         <button type="submit" 
-                                class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                            Sign Up
+                                wire:loading.class="opacity-70 cursor-not-allowed"
+                                wire:loading.attr="disabled"
+                                class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 flex items-center justify-center">
+                            <div wire:loading wire:target="submitRegistrationForm" class="mr-2">
+                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </div>
+                            <span wire:loading.remove wire:target="submitRegistrationForm">Sign Up</span>
+                            <span wire:loading wire:target="submitRegistrationForm">Creating Account...</span>
                         </button>
                     </form>
                 @else
@@ -123,14 +132,31 @@
                                 @error('otp') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                             </div>
 
-                            <button type="submit" class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                                Verify OTP
+                            <button type="submit" 
+                                    wire:loading.class="opacity-70 cursor-not-allowed"
+                                    wire:loading.attr="disabled"
+                                    class="w-full py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 flex items-center justify-center">
+                                <div wire:loading wire:target="verifyOtp" class="mr-2">
+                                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </div>
+                                <span wire:loading.remove wire:target="verifyOtp">Verify OTP</span>
+                                <span wire:loading wire:target="verifyOtp">Verifying...</span>
                             </button>
 
-                            <div class="text-center">
-                                <button type="button" wire:click="resendOtp" class="text-teal-600 text-sm hover:underline">
-                                    Resend OTP
+                            <div class="fex justify-between items-center w-full">
+                                <div class="text-center fex justify-between items-center w-full">
+                                <button type="button" 
+                                        wire:click="resendOtp" 
+                                        wire:loading.class="opacity-50"
+                                        wire:loading.attr="disabled"
+                                        class="text-teal-600 text-sm hover:underline flex items-center justify-center">
+                                    <span wire:loading.remove wire:target="resendOtp">Resend OTP</span>
+                                    <span wire:loading wire:target="resendOtp">Sending...</span>
                                 </button>
+                            </div>
                             </div>
                         </form>
                     </div>
