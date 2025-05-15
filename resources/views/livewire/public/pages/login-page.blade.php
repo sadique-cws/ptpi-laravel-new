@@ -53,7 +53,7 @@
                 </form>
 
                 <div class="mt-6">
-                    <a href="{{ route('auth.google') }}"
+                    <a navigate href="{{ route('auth.google') }}"
                         class="w-full flex items-center justify-center gap-2 bg-white border-2 border-gray-200 p-3 rounded-xl hover:bg-gray-50 transition duration-200">
                         <svg class="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#EA4335"
@@ -68,17 +68,20 @@
                         <span class="text-sm font-medium text-gray-700">Continue with Google</span>
                     </a>
                 </div>
-                <div class="mt-6 space-y-4">
+                <div class="mt-6 space-y-4 w-full">
                     <div class="flex items-center">
                         <hr class="flex-grow border-gray-300"><span class="px-4 text-sm text-gray-500">Or</span>
                         <hr class="flex-grow border-gray-300">
                     </div>
-                    <div class="space-y-3"><a href="{{ route('public.teacher.signup') }}" type="button"
-                            class="px-4 py-2 rounded bg-teal-600 text-teal-600 w-full bg-white border-2 border-teal-600 py-3 rounded-xl hover:bg-teal-50 transition duration-200">Register
-                            as Teacher</a>
-                        <a href="{{ route('public.recruiter.signup') }}" type="button"
-                            class="px-4 py-2 rounded bg-teal-600 text-teal-600 w-full bg-white border-2 border-teal-600 py-3 rounded-xl hover:bg-teal-50 transition duration-200">Register
-                            as Recruiter</a>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+                        <a wire:navigate href="{{ route('public.teacher.signup') }}"
+                            class="block text-center text-teal-600 bg-white border-2 border-teal-600 py-3 rounded-xl hover:bg-teal-50 transition duration-200">
+                            Register as Teacher
+                        </a>
+                        <a wire:navigate href="{{ route('public.recruiter.signup') }}"
+                            class="block text-center text-teal-600 bg-white border-2 border-teal-600 py-3 rounded-xl hover:bg-teal-50 transition duration-200">
+                            Register as Recruiter
+                        </a>
                     </div>
                 </div>
 
