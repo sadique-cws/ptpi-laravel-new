@@ -7,11 +7,9 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+#[Layout("layouts.loginLayout")]
 class LoginPage extends Component
 {
-    #[Layout("layouts.loginLayout")]
-
-
     #[Validate("required")]
     public $email;
     #[Validate("required")]
