@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Public\Pages;
 
+use App\Jobs\SendOtpNotification;
 use App\Models\EmailVerification;
 use App\Models\User;
 use App\Notifications\OtpVerificationNotification;
@@ -48,7 +49,8 @@ class TeacherSignup extends Component
         ]);
 
         $this->verificationId = $verification->id;
-        $verification->notify(new OtpVerificationNotification($otp));
+        // $verification->notify(new OtpVerificationNotification($otp));
+        SendOtpNotification::dispatch($verification, $otp);
 
         $this->showOtpForm = true;
         
