@@ -1,7 +1,13 @@
 <?php
 
 namespace App\Livewire\Public\Pages;
+
+use App\Models\EmailVerification;
 use App\Models\User;
+use App\Notifications\OtpVerificationNotification;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -9,7 +15,7 @@ use Livewire\Component;
 #[Layout("layouts.loginLayout")]
 class RecruiterSignup extends Component
 {
-    #[Validate('required|string|max:255')] 
+    #[Validate('required|string|max:255')]
     public $Fname;
     #[Validate('required|string|max:255')]
     public $Lname;
@@ -17,9 +23,10 @@ class RecruiterSignup extends Component
     public $email;
     #[Validate('required|string|min:8|regex:/[0-9]/|regex:/[^A-Za-z0-9]/')]
     public $password;
-    
 
-    public function register(){
+
+    public function register()
+    {
         $this->validate();
 
         try {
@@ -32,8 +39,7 @@ class RecruiterSignup extends Component
             ]);
 
             return redirect()->route('teacher.profile')->with('success', 'Registration successful!');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->addError('general', 'An error occurred during registration. Please try again.');
         };
     }
