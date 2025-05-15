@@ -31,25 +31,25 @@
                     <form wire:submit="submitRegistrationForm" class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700">First Name</label>
-                            <input type="text" wire:model="Fname" class="mt-1 p-2 border block w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                            <input type="text" wire:model="Fname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                             @error('Fname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Last Name</label>
-                            <input type="text" wire:model="Lname" class="mt-1 p-2 border block w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                            <input type="text" wire:model="Lname" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                             @error('Lname') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" wire:model="email" class="mt-1 p-2 border block w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                            <input type="email" wire:model="email" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                             @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" wire:model="password" class="mt-1 p-2 border block w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                            <input type="password" wire:model="password" class="mt-1 p-2 border block w-full rounded-xl border-teal-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                             @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                         </div>
 
