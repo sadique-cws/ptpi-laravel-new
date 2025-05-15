@@ -30,3 +30,6 @@ require __DIR__.'/teacher.php';
 
 // import recruiter routes
 require __DIR__.'/recruiter.php';
+
+//exam setter routes
+require __DIR__.'/examsetter.php';

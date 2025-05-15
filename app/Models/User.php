@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -33,6 +34,11 @@ class User extends Authenticatable
         'marital_status',
         'religion'
     ];
+
+    public function examSetter(): HasOne
+    {
+        return $this->hasOne(ExamSetter::class);
+    }
 
 
 
