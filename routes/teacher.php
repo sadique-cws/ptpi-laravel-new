@@ -4,6 +4,7 @@ use App\Livewire\Teacher\Pages\Attempts;
 use App\Livewire\Teacher\Pages\Dashboard;
 use App\Livewire\Teacher\Pages\JobProfile;
 use App\Livewire\Teacher\Pages\Profile;
+use App\Livewire\Teacher\Pages\TeacherExam;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(["userRole","auth"])->group(function(){
@@ -12,5 +13,6 @@ Route::middleware(["userRole","auth"])->group(function(){
         Route::get('/profile', Profile::class)->name('teacher.profile');
         Route::get('/jobProfile', JobProfile::class)->name('teacher.jobProfile');
         Route::get('/attempts', Attempts::class)->name('teacher.attempts');
+        Route::get('/exam', TeacherExam::class)->name('teacher.exam');
     });
 });
