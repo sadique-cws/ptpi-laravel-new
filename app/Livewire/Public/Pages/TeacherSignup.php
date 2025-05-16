@@ -5,6 +5,7 @@ namespace App\Livewire\Public\Pages;
 use App\Jobs\SendOtpNotification;
 use App\Models\EmailVerification;
 use App\Models\User;
+use App\Notifications\OtpVerificationNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Layout;
