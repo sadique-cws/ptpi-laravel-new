@@ -4,6 +4,7 @@ use App\Livewire\Admin\Pages\Dashboard;
 use App\Livewire\Admin\Pages\ManageCategory;
 use App\Livewire\Admin\Pages\ManageExam;
 use App\Livewire\Admin\Pages\ManageExamSetter;
+use App\Livewire\Admin\Pages\ManageJobRole;
 use App\Livewire\Admin\Pages\ManageLevel;
 use App\Livewire\Admin\Pages\ManageQuestions;
 use App\Livewire\Admin\Pages\ManageRecruiter;
@@ -24,5 +25,6 @@ Route::middleware(["userRole","auth"])->group(function(){
     Route::get("/admin/exam/{examId}/questions", ManageQuestions::class)->name("admin.exam.questions");
     Route::get("/admin/manage-recruiter",ManageRecruiter::class)->name("admin.recruiter");
     Route::get("/admin/manage-exam-setter",ManageExamSetter::class)->name("admin.exam-setter");
+    Route::get("/admin/manage-job_role",ManageJobRole::class)->name("admin.job-role");
 });
 ?>
