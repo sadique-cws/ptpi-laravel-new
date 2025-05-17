@@ -57,7 +57,7 @@
                                 id="current_pincode" 
                                 wire:model.live="current_pincode"
                                 maxlength="6"
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500"
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500"
                                 placeholder="Enter 6 digit PIN code">
                             @error('current_pincode') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -71,7 +71,7 @@
                                 id="current_state" 
                                 wire:model="current_state"
                                 readonly
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 bg-gray-50">
+                                class="mt-1 p-2 block w-full rounded-lg border border-gray-300 bg-gray-50 focus:outline-0">
                             @error('current_state') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -84,7 +84,7 @@
                                 id="current_district" 
                                 wire:model="current_district"
                                 readonly
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 bg-gray-50">
+                                class="mt-1 p-2 block w-full rounded-lg border border-gray-300 bg-gray-50 focus:outline-0">
                             @error('current_district') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -95,7 +95,7 @@
                             <label for="current_post_office" class="block text-sm font-medium text-gray-700">Post Office</label>
                             <select id="current_post_office" 
                                 wire:model="current_post_office"
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500">
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500">
                                 <option value="">Select Post Office</option>
                                 @foreach($current_postOffices as $office)
                                     <option value="{{ $office['Name'] }}">{{ $office['Name'] }}</option>
@@ -180,7 +180,7 @@
                                 id="permanent_pincode" 
                                 wire:model.live="permanent_pincode"
                                 maxlength="6"
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500"
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500"
                                 placeholder="Enter 6 digit PIN code">
                             @error('permanent_pincode') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -194,7 +194,7 @@
                                 id="permanent_state" 
                                 wire:model="permanent_state"
                                 readonly
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 bg-gray-50">
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 bg-gray-50">
                             @error('permanent_state') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -207,7 +207,7 @@
                                 id="permanent_district" 
                                 wire:model="permanent_district"
                                 readonly
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 bg-gray-50">
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 bg-gray-50">
                             @error('permanent_district') 
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -218,7 +218,7 @@
                             <label for="permanent_post_office" class="block text-sm font-medium text-gray-700">Post Office</label>
                             <select id="permanent_post_office" 
                                 wire:model="permanent_post_office"
-                                class="mt-1 p-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500">
+                                class="mt-1 p-2 block w-full rounded-lg border focus:outline-0 border-gray-300 shadow-sm focus:ring-teal-500 focus:border-teal-500">
                                 <option value="">Select Post Office</option>
                                 @foreach($permanent_postOffices as $office)
                                     <option value="{{ $office['Name'] }}">{{ $office['Name'] }}</option>
