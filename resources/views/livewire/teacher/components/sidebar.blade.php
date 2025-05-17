@@ -21,8 +21,8 @@
                         </svg>
                     </div>
                     <div class="flex flex-col min-w-0">
-                        <h2 class="text-md font-semibold text-gray-800 truncate">Your Name</h2>
-                        <p class="text-sm text-gray-600 truncate">email@example.com</p>
+                        <h2 class="text-md font-semibold text-gray-800 truncate capitalize">{{ $user->first_name }} {{ $user->last_name }}</h2>
+                        <p class="text-sm text-gray-600 truncate">{{$user->email}}</p>
                     </div>
                 </div>
             </div>

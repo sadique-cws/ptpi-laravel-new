@@ -7,6 +7,11 @@ use Livewire\Component;
 
 class Sidebar extends Component
 {
+    public $user;
+
+    public function mount(){
+        $this->user = Auth::user();
+    }
     public function logout(){
         Auth::logout();
         session()->invalidate();
