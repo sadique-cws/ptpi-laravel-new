@@ -65,10 +65,10 @@ class="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#3E98C
         <button @click="dropdownOpen = !dropdownOpen"
             class="flex items-center gap-2 pl-2 focus:outline-none">
             <div class="hidden md:flex flex-col items-end text-right">
-                <span class="font-medium text-white text-sm leading-tight">
-                    Rahul Kumar
+                <span class="font-medium text-white text-sm leading-tight capitalize">
+                    {{ $user->first_name }} {{ $user->last_name }}
                 </span>
-                <span class="text-xs text-blue-100 leading-tight">rahul@gmail.com</span>
+                <span class="text-xs text-blue-100 leading-tight">{{$user->email}}</span>
             </div>
             <div class="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center">
                 <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
